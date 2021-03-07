@@ -41,13 +41,13 @@ export class HttpClientService {
     this.userSubject = new BehaviorSubject<any>(null);
     this.user = this.userSubject.asObservable();
     this.tokensSubject = new BehaviorSubject<any>(null);
-    this.tokens = this.userSubject.asObservable();
+    this.tokens = this.tokensSubject.asObservable();
     this.registeredUserSubject = new BehaviorSubject<any>(null);
-    this.registeredUser = this.userSubject.asObservable();
+    this.registeredUser = this.registeredUserSubject.asObservable();
     this.userDataSubject = new BehaviorSubject<any>(null);
-    this.userData = this.userSubject.asObservable();
+    this.userData = this.userDataSubject.asObservable();
     this.updatedUserSubject = new BehaviorSubject<any>(null);
-    this.updatedUser = this.userSubject.asObservable();
+    this.updatedUser = this.updatedUserSubject.asObservable();
   }
 
   login(username: string, password: string) {
@@ -141,9 +141,16 @@ export class HttpClientService {
   }
 
   private startRefreshTokenTimer() {
-    const jwtToken = JSON.parse(atob(this.userValue.token.split('.')[1]));
+    const jwtToken = JSON.parse(atob(this.tokensValue.token.split('.')[1]));
     const expires = new Date(jwtToken.exp * 1000);
+    console.log('token expires in', this.millisToMinutesAndSeconds(expires.getTime() - Date.now()));
     const timeout = expires.getTime() - Date.now() - (60 * 1000);
     this.refreshTokenTimeout = setTimeout(() => this.refreshToken(this.tokensValue.refreshToken, this.tokensValue.token).subscribe(), timeout);
+  }
+
+  millisToMinutesAndSeconds(millis) {
+    const minutes: any = Math.floor(millis / 60000);
+    const seconds: any = ((millis % 60000) / 1000).toFixed(0);
+    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
   }
 }
