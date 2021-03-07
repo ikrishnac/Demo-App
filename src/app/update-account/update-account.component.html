@@ -1,0 +1,91 @@
+<section class="header">
+    <h3>Please update account information</h3>
+</section>
+<div class="form-container">
+    <form [formGroup]="updateForm" (submit)="updateInfo()">
+        <table>
+            <tr>
+                <td>
+                    First Name
+                </td>
+                <td>
+                    <label class="mdc-text-field mdc-text-field--filled username">
+                        <span class="mdc-text-field__ripple"></span>
+                        <input formControlName="firstname" type="text" class="mdc-text-field__input"
+                            aria-labelledby="username-label" name="otp" required>
+                        <span class="mdc-line-ripple"></span>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Last Name
+                </td>
+                <td>
+                    <label class="mdc-text-field mdc-text-field--filled lastname">
+                        <span class="mdc-text-field__ripple"></span>
+                        <input formControlName="lastname" type="text" class="mdc-text-field__input"
+                            aria-labelledby="username-label" name="lastname" required>
+                        <span class="mdc-line-ripple"></span>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Bio
+                </td>
+                <td>
+                    <label class="mdc-text-field mdc-text-field--filled bio">
+                        <span class="mdc-text-field__ripple"></span>
+                        <input formControlName="bio" type="text" class="mdc-text-field__input"
+                            aria-labelledby="username-label" name="bio" required>
+                        <span class="mdc-line-ripple"></span>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Country
+                </td>
+                <td>
+                    <label class="mdc-text-field mdc-text-field--filled country">
+                        <span class="mdc-text-field__ripple"></span>
+                        <input formControlName="country" type="text" class="mdc-text-field__input"
+                            aria-labelledby="username-label" name="country" required>
+                        <span class="mdc-line-ripple"></span>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Email
+                </td>
+                <td>
+                    <label class="mdc-text-field mdc-text-field--filled email">
+                        <span class="mdc-text-field__ripple"></span>
+                        <input formControlName="email" type="text" class="mdc-text-field__input"
+                            aria-labelledby="username-label" name="email" required>
+                        <span class="mdc-line-ripple"></span>
+                    </label>
+                </td>
+            </tr>
+        </table>
+        <div class="button-container">
+            <button type="submit" class="mdc-button mdc-button--raised next">
+                <div class="mdc-button__ripple"></div>
+                <span class="mdc-button__label">
+                    Save
+                </span>
+            </button>
+        </div>
+    </form>
+</div>
+<section class="header error-color"
+    *ngIf="error && error.error && error.error.code">
+    <h4>{{error.error.code}}</h4>
+    <h4>{{error.error.errors[0].message}}</h4>
+</section>
+<section class="header error-color"
+    *ngIf="!updateForm.valid">
+    <h4>Please update all information</h4>
+</section>

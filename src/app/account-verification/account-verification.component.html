@@ -1,0 +1,23 @@
+<section class="header">
+    <h3>Please enter the OTP you have received on your email for account verification</h3>
+</section>
+<form [formGroup]="verifyForm" (submit)="verify()">
+    <label class="mdc-text-field mdc-text-field--filled otp">
+        <span class="mdc-text-field__ripple"></span>
+        <input formControlName="otp" type="text" class="mdc-text-field__input" aria-labelledby="username-label"
+            name="otp" required>
+        <span class="mdc-floating-label" id="username-label">OTP</span>
+        <span class="mdc-line-ripple"></span>
+    </label>
+    <div class="button-container">
+        <button type="submit" class="mdc-button mdc-button--raised next">
+            <div class="mdc-button__ripple"></div>
+            <span class="mdc-button__label">
+                verify
+            </span>
+        </button>
+    </div>
+</form>
+<section class="header error-color" *ngIf="error && error.error && error.error.code">
+    <h4>{{error.error.errors[0].message}}</h4>
+</section>

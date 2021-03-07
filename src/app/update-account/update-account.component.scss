@@ -1,0 +1,38 @@
+@import "@material/textfield/mdc-text-field";
+@import "@material/button/mdc-button";
+
+.username,
+.lastname,
+.bio,
+.country,
+.email {
+  display: flex;
+  margin: 20px auto;
+  width: 300px;
+}
+
+.header {
+    text-align: center;
+  }
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    margin: auto;
+}
+  
+.button-container button {
+    margin: 3px;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    width: 600px;
+    margin: auto;
+}
+
+.error-color {
+  color: red;
+}

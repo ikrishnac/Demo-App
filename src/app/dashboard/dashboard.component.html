@@ -1,0 +1,37 @@
+<section class="header">
+    <h3>Account information</h3>
+</section>
+<div>
+    <div class="form-container" *ngIf="userData">
+        <table>
+            <tr>
+                <td>First name</td>
+                <td>{{userData.firstname}}</td>
+            </tr>
+            <tr>
+                <td>Last name</td>
+                <td>{{userData.lastname}}</td>
+            </tr>
+            <tr>
+                <td>Bio</td>
+                <td>{{userData.bio}}</td>
+            </tr>
+            <tr>
+                <td>Country</td>
+                <td>{{userData.country}}</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>{{userData.email}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="button-container" *ngIf="userData">
+        <button class="mdc-button mdc-button--raised next" (click)="updateDetails()">
+            <div class="mdc-button__ripple"></div>
+            <span class="mdc-button__label">
+                Update
+            </span>
+        </button>
+    </div>
+</div>
